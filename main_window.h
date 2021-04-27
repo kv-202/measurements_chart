@@ -113,6 +113,10 @@ public slots:
     }
 
     void on_open(bool) {
+        
+        if (_wait) {
+            return;
+        }
 
         QString file = QFileDialog::getOpenFileName(this);
         if (!file.isEmpty() && _on_opne) {
@@ -159,7 +163,7 @@ public slots:
             _timer = nullptr;
         }
 
-        _draw_mesurements = true;
+        _draw_mesurements = false;
         _wait = 0;
 
         update();
